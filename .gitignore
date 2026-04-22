@@ -67,3 +67,8 @@ htmlcov/
 # Build artifacts
 *.tgz
 *.tar.gz
+
+# Copilot / Claude skill folders
+fastapi/
+frontend-design/
+nextjs-turbopack/
