@@ -1,0 +1,4 @@
+docker compose logs frontend --tail 30 2>&1 | Select-Object -Last 30
+
+
+docker compose stop frontend; Remove-Item -Recurse -Force "c:\Coding Projects\Blogify\frontend\.next" -ErrorAction SilentlyContinue; docker compose start frontend; Start-Sleep -Seconds 4; docker compose logs frontend --tail 6

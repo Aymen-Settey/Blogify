@@ -1,0 +1,335 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Design tokens
+   ------------------------------------------------------------
+   Values are RGB triplets (space-separated) so Tailwind can
+   compose them with `<alpha-value>`. Light is the default; the
+   `.dark` class on <html> swaps every variable in place.
+   ============================================================ */
+
+@layer base {
+  :root {
+    /* Paper — surfaces, from page background up to elevated cards. */
+    --color-paper-0: 252 251 249;
+    --color-paper-1: 247 245 242;
+    --color-paper-2: 240 237 232;
+    --color-paper-3: 228 224 217;
+    --color-paper-4: 214 209 200;
+
+    /* Ink — text and iconography. Warm-biased deep neutrals. */
+    --color-ink-0: 255 255 255;
+    --color-ink-1: 243 242 240;
+    --color-ink-2: 225 223 219;
+    --color-ink-3: 190 188 184;
+    --color-ink-4: 150 148 144;
+    --color-ink-5: 112 110 106;
+    --color-ink-6: 82  80  77;
+    --color-ink-7: 54  52  50;
+    --color-ink-8: 32  30  29;
+    --color-ink-9: 18  16  15;
+
+    /* Brand — reserved for primary CTAs and links. */
+    --color-brand-50:  239 246 255;
+    --color-brand-100: 219 234 254;
+    --color-brand-200: 191 219 254;
+    --color-brand-300: 147 197 253;
+    --color-brand-400: 96  165 250;
+    --color-brand-500: 59  130 246;
+    --color-brand-600: 37  99  235;
+    --color-brand-700: 29  78  216;
+    --color-brand-800: 30  64  175;
+    --color-brand-900: 30  58  138;
+    --color-brand-950: 23  37  84;
+
+    /* Aurora — violet → cyan. Reserved exclusively for AI-origin surfaces. */
+    --color-aurora-from: 139 92  246;
+    --color-aurora-via:  99  102 241;
+    --color-aurora-to:   34  211 238;
+    --color-aurora-tint: 237 233 254;
+    --color-aurora-ink:  76  29  149;
+
+    /* Semantic accents */
+    --color-accent-warn:    217 119 6;
+    --color-accent-success: 5   150 105;
+    --color-accent-danger:  220 38  38;
+
+    /* Radius ladder */
+    --radius-sm:  0.375rem;
+    --radius-md:  0.625rem;
+    --radius-lg:  0.875rem;
+    --radius-xl:  1.125rem;
+    --radius-2xl: 1.5rem;
+    --radius-3xl: 2rem;
+
+    /* Shadows — `editorial` is the signature elevation for featured cards. */
+    --shadow-sm: 0 1px 2px 0 rgb(var(--color-ink-9) / 0.04);
+    --shadow-md: 0 2px 8px -2px rgb(var(--color-ink-9) / 0.08),
+                 0 1px 3px -1px rgb(var(--color-ink-9) / 0.06);
+    --shadow-lg: 0 12px 32px -12px rgb(var(--color-ink-9) / 0.18),
+                 0 4px 12px -4px rgb(var(--color-ink-9) / 0.08);
+    --shadow-xl: 0 24px 60px -20px rgb(var(--color-ink-9) / 0.22),
+                 0 8px 20px -8px rgb(var(--color-ink-9) / 0.12);
+    --shadow-editorial:
+      0 1px 0 0 rgb(var(--color-ink-9) / 0.04),
+      0 18px 44px -24px rgb(var(--color-ink-9) / 0.22);
+    --shadow-glow-aurora:
+      0 0 0 1px rgb(var(--color-aurora-from) / 0.28),
+      0 8px 28px -8px rgb(var(--color-aurora-from) / 0.35),
+      0 2px 8px -2px rgb(var(--color-aurora-to) / 0.25);
+  }
+
+  .dark {
+    --color-paper-0: 14  13  16;
+    --color-paper-1: 22  21  25;
+    --color-paper-2: 31  30  35;
+    --color-paper-3: 42  40  46;
+    --color-paper-4: 58  55  63;
+
+    --color-ink-0: 14  13  16;
+    --color-ink-1: 26  24  28;
+    --color-ink-2: 46  43  50;
+    --color-ink-3: 74  70  80;
+    --color-ink-4: 110 105 118;
+    --color-ink-5: 150 144 158;
+    --color-ink-6: 188 182 196;
+    --color-ink-7: 216 211 222;
+    --color-ink-8: 236 232 242;
+    --color-ink-9: 249 247 252;
+
+    --color-brand-50:  23  37  84;
+    --color-brand-100: 30  58  138;
+    --color-brand-200: 30  64  175;
+    --color-brand-300: 29  78  216;
+    --color-brand-400: 37  99  235;
+    --color-brand-500: 59  130 246;
+    --color-brand-600: 96  165 250;
+    --color-brand-700: 147 197 253;
+    --color-brand-800: 191 219 254;
+    --color-brand-900: 219 234 254;
+    --color-brand-950: 239 246 255;
+
+    --color-aurora-from: 167 139 250;
+    --color-aurora-via:  129 140 248;
+    --color-aurora-to:   103 232 249;
+    --color-aurora-tint: 49  28  86;
+    --color-aurora-ink:  237 233 254;
+
+    --color-accent-warn:    251 191 36;
+    --color-accent-success: 52  211 153;
+    --color-accent-danger:  248 113 113;
+
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.5);
+    --shadow-md: 0 2px 8px -2px rgb(0 0 0 / 0.55),
+                 0 1px 3px -1px rgb(0 0 0 / 0.4);
+    --shadow-lg: 0 14px 32px -12px rgb(0 0 0 / 0.7),
+                 0 4px 12px -4px rgb(0 0 0 / 0.45);
+    --shadow-xl: 0 28px 64px -20px rgb(0 0 0 / 0.75),
+                 0 8px 20px -8px rgb(0 0 0 / 0.5);
+    --shadow-editorial:
+      0 0 0 1px rgb(var(--color-ink-9) / 0.06),
+      0 20px 50px -24px rgb(0 0 0 / 0.8);
+    --shadow-glow-aurora:
+      0 0 0 1px rgb(var(--color-aurora-from) / 0.45),
+      0 10px 32px -8px rgb(var(--color-aurora-from) / 0.5),
+      0 2px 10px -2px rgb(var(--color-aurora-to) / 0.35);
+  }
+
+  html {
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-paper-0 text-ink-8 antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  }
+
+  :where(a, button, [role="button"], input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid rgb(var(--color-brand-500));
+    outline-offset: 2px;
+    border-radius: var(--radius-sm);
+  }
+
+  ::selection {
+    background: rgb(var(--color-aurora-from) / 0.25);
+    color: rgb(var(--color-ink-9));
+  }
+}
+
+/* ============================================================
+   Prose (Tiptap / post body)
+   ============================================================ */
+
+@layer components {
+  .prose-content {
+    @apply font-sans text-ink-7;
+  }
+  .prose-content :is(h1, h2, h3, h4) {
+    @apply font-display font-medium text-ink-9 tracking-tight;
+  }
+  .prose-content h1 {
+    @apply text-4xl mt-10 mb-5;
+  }
+  .prose-content h2 {
+    @apply text-3xl mt-8 mb-4;
+  }
+  .prose-content h3 {
+    @apply text-2xl mt-6 mb-3;
+  }
+  .prose-content h4 {
+    @apply text-xl mt-4 mb-2;
+  }
+  .prose-content p {
+    @apply text-ink-7 leading-[1.75] mb-5 text-[1.05rem];
+  }
+  .prose-content a {
+    @apply text-brand-600 underline decoration-brand-300 underline-offset-2 hover:decoration-brand-600 transition-colors;
+  }
+  .prose-content strong {
+    @apply text-ink-9 font-semibold;
+  }
+  .prose-content code {
+    @apply bg-paper-2 px-1.5 py-0.5 rounded text-[0.9em] font-mono text-ink-8;
+  }
+  .prose-content pre {
+    @apply bg-ink-9 text-ink-1 p-4 rounded-xl overflow-x-auto my-6 text-sm leading-relaxed;
+  }
+  .prose-content pre code {
+    @apply bg-transparent p-0 text-ink-1;
+  }
+  .prose-content img {
+    @apply rounded-xl my-6 max-w-full;
+  }
+  .prose-content ul {
+    @apply list-disc pl-6 mb-5 text-ink-7 space-y-1;
+  }
+  .prose-content ol {
+    @apply list-decimal pl-6 mb-5 text-ink-7 space-y-1;
+  }
+  .prose-content blockquote {
+    @apply border-l-2 border-ink-9 pl-5 my-6 italic font-display text-xl text-ink-8 leading-snug;
+  }
+  .prose-content hr {
+    @apply my-10 border-ink-2;
+  }
+
+  /* Editorial drop-cap, opt-in via `data-dropcap="true"` on the article root. */
+  .prose-content[data-dropcap="true"] > p:first-of-type::first-letter {
+    @apply font-display font-semibold text-ink-9;
+    float: left;
+    font-size: 4.2em;
+    line-height: 0.9;
+    padding: 0.12em 0.14em 0 0;
+    margin-right: 0.08em;
+  }
+
+  /* Kicker — small-caps editorial label. */
+  .kicker {
+    @apply font-sans text-kicker uppercase text-ink-5;
+  }
+
+  /* Aurora helpers */
+  .aurora-text {
+    @apply bg-aurora-gradient bg-clip-text text-transparent;
+    background-size: 200% 100%;
+  }
+  .aurora-ring {
+    box-shadow: var(--shadow-glow-aurora);
+  }
+  .aurora-rail {
+    position: relative;
+  }
+  .aurora-rail::before {
+    content: "";
+    position: absolute;
+    inset: 0 auto 0 0;
+    width: 2px;
+    background: linear-gradient(
+      to bottom,
+      rgb(var(--color-aurora-from)),
+      rgb(var(--color-aurora-to))
+    );
+    border-top-left-radius: inherit;
+    border-bottom-left-radius: inherit;
+  }
+}
+
+/* ============================================================
+   PostCard click-feedback animations (preserved).
+   ============================================================ */
+
+@keyframes postcard-progress {
+  0%   { transform: translateX(-100%); }
+  50%  { transform: translateX(220%); }
+  100% { transform: translateX(-100%); }
+}
+
+@keyframes postcard-shimmer {
+  0%   { transform: translateX(0%); }
+  100% { transform: translateX(400%); }
+}
+
+/* ============================================================
+   Comment shimmer — used on CommentThread skeletons and on
+   optimistic "posting…" states. A soft sweep from left to right
+   over a paper background.
+   ============================================================ */
+
+@keyframes comment-shimmer-sweep {
+  0%   { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.comment-shimmer {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.comment-shimmer::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.55) 50%,
+    transparent 100%
+  );
+  animation: comment-shimmer-sweep 1.4s ease-in-out infinite;
+  mix-blend-mode: overlay;
+}
+
+:root[class~="dark"] .comment-shimmer::after,
+.dark .comment-shimmer::after {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.08) 50%,
+    transparent 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .comment-shimmer::after {
+    animation: none;
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
